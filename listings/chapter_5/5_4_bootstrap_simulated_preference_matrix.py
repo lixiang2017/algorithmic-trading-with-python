@@ -1,12 +1,13 @@
 import pandas as pd
 import numpy as np
 
-from pypm import metrics, signals, data_io, simulation, optimization
-from pypm.optimization import GridSearchOptimizer
+from src.pypm import metrics, signals, data_io, simulation, optimization
+from src.pypm.optimization import GridSearchOptimizer
 
 from typing import List, Dict, Tuple, Callable
 
-Performance = simulation.PortfolioHistory.PerformancePayload # Dict[str, float]
+Performance = simulation.PortfolioHistory.PerformancePayload  # Dict[str, float]
+
 
 def bind_simulator(**sim_kwargs) -> Callable:
     """
@@ -32,7 +33,6 @@ def bind_simulator(**sim_kwargs) -> Callable:
     _sharpe: Callable = bootstrap_rolling_sharpe_ratio
 
     def _simulate(bootstrap_test_id: int) -> Performance:
-        
         signal = prices.apply(_bollinger, args=(bollinger_n,), axis=0)
         preference = returns.apply(_sharpe, axis=0)
 
@@ -43,13 +43,13 @@ def bind_simulator(**sim_kwargs) -> Callable:
 
     return _simulate
 
-if __name__ == '__main__':
 
+if __name__ == "__main__":
     simulate = bind_simulator(initial_cash=10000, max_active_positions=5)
 
     optimizer = GridSearchOptimizer(simulate)
     optimizer.optimize(bootstrap_test_id=range(1000))
 
-    print(optimizer.get_best('excess_cagr'))
+    print(optimizer.get_best("excess_cagr"))
     optimizer.print_summary()
-    optimizer.plot('excess_cagr')
+    optimizer.plot("excess_cagr")
