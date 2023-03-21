@@ -1,4 +1,5 @@
 import pandas as pd
+from src.pypm.indicators import *
 
 
 def calculate_macd_oscillator(

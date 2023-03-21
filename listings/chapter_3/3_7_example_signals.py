@@ -1,5 +1,6 @@
 import pandas as pd
-from src.pypm.metrics import *
+import numpy as np
+from src.pypm.indicators import *
 
 
 def create_macd_signal(series: pd.Series, n1: int = 5, n2: int = 34) -> pd.Series:

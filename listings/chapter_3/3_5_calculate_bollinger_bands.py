@@ -1,3 +1,6 @@
+from src.pypm.indicators import *
+
+
 def calculate_bollinger_bands(series: pd.Series, n: int = 20) -> pd.DataFrame:
     """
     Calculates the bollinger bands and returns them as a dataframe
