@@ -1,4 +1,4 @@
-from pypm import data_io, metrics
+from src.pypm import data_io, metrics
 import numpy as np
 import pandas as pd
 from typing import List
@@ -13,7 +13,6 @@ _calc_returns = metrics.calculate_log_return_series
 _corr_by_symbol = dict()
 
 for symbol in symbols:
-
     alt_series = alt_data[symbol].dropna()
     price_series = eod_data[symbol]
 
@@ -32,7 +31,7 @@ for symbol in symbols:
     _corr = np.corrcoef(price_return_series, alt_return_series)
 
     # This element of the correlation matrix is the number we want
-    _corr_by_symbol[symbol] = _corr[1,0]
+    _corr_by_symbol[symbol] = _corr[1, 0]
 
 # Describe results
 results = pd.Series(_corr_by_symbol)
