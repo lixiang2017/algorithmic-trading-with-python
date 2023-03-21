@@ -1,4 +1,7 @@
 from sklearn.linear_model import LinearRegression
+import pandas as pd
+from src.pypm.metrics import *
+
 
 def calculate_pure_profit_score(price_series: pd.Series) -> float:
     """

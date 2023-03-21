@@ -1,5 +1,10 @@
-def calculate_jensens_alpha(return_series: pd.Series, 
-    benchmark_return_series: pd.Series) -> float: 
+import pandas as pd
+from src.pypm.metrics import *
+
+
+def calculate_jensens_alpha(
+    return_series: pd.Series, benchmark_return_series: pd.Series
+) -> float:
     """
     Calculates jensens alpha. Prefers input series have the same index. Handles
     NAs.

@@ -1,4 +1,5 @@
 import pandas as pd
+from src.pypm.metrics import *
 
 
 def calculate_cagr(series: pd.Series) -> float:

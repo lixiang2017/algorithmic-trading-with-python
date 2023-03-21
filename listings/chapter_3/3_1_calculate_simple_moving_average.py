@@ -1,3 +1,7 @@
-def calculate_simple_moving_average(series: pd.Series, n: int=20) -> pd.Series:
+import pandas as pd
+from src.pypm.metrics import *
+
+
+def calculate_simple_moving_average(series: pd.Series, n: int = 20) -> pd.Series:
     """Calculates the simple moving average"""
     return series.rolling(n).mean()
