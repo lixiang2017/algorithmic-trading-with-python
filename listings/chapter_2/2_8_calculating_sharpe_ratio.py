@@ -1,5 +1,7 @@
-def calculate_sharpe_ratio(price_series: pd.Series, 
-    benchmark_rate: float=0) -> float:
+from src.pypm.metrics import *
+
+
+def calculate_sharpe_ratio(price_series: pd.Series, benchmark_rate: float = 0) -> float:
     """
     Calculates the sharpe ratio given a price series. Defaults to benchmark_rate
     of zero.
